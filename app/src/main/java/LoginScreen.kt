@@ -22,10 +22,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import services.IsUserExist
+import java.lang.ref.Reference
 
 @Composable
 fun LoginScreen(){
+    val navigator = rememberNavController()
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     Column(
@@ -46,7 +50,10 @@ fun LoginScreen(){
         LoginTextField("Password", password)
         Spacer(modifier = Modifier.height(20.dp))
         LoginButton({
-            IsUserExist(username.value, password.value)
+            if(IsUserExist(username.value, password.value))
+                navigator.navigate("home")
+            else
+                0
         })
     }
 }
