@@ -28,8 +28,7 @@ import services.IsUserExist
 import java.lang.ref.Reference
 
 @Composable
-fun LoginScreen(){
-    val navigator = rememberNavController()
+fun LoginScreen(navController: NavController){
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     Column(
@@ -51,7 +50,7 @@ fun LoginScreen(){
         Spacer(modifier = Modifier.height(20.dp))
         LoginButton({
             if(IsUserExist(username.value, password.value))
-                navigator.navigate("home")
+               navController.navigate("home")
             else
                 0
         })

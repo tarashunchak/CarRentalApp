@@ -4,7 +4,7 @@ import storage.users
 import java.util.Date
 
 /*------------------User-------------------*/
-var _userAI: UInt = 0u
+private var _userAI: UInt = 0u
 public data class User (
     var username:String = "",
     var password:String = "",
