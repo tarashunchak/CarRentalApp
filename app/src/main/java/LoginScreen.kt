@@ -50,7 +50,9 @@ fun LoginScreen(navController: NavController){
         Spacer(modifier = Modifier.height(20.dp))
         LoginButton({
             if(IsUserExist(username.value, password.value))
-               navController.navigate("home")
+               navController.navigate("home"){
+                   popUpTo(0)
+               }
             else
                 0
         })
