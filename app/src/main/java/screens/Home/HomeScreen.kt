@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import screens.Home.Components.CarCard
+import screens.Home.Components.Header
 import storage.cars
 
 @Composable
@@ -23,6 +24,7 @@ fun HomeScreen(){
             .background(Color(0xFF000A31))
             .padding(10.dp),
     ){
+        Header()
         cars.forEach{
             CarCard(it.value)
             Spacer(

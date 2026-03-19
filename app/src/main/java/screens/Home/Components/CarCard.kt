@@ -25,8 +25,7 @@ import storage.models.Car
 
 @Composable
 fun CarCard(car: Car){
-    Button(
-        onClick = {},
+    Column(
         modifier = Modifier.fillMaxWidth()
             .background(Color(0x0AFFFFFF))
             .height(260.dp)
@@ -36,26 +35,22 @@ fun CarCard(car: Car){
                 shape = AbsoluteCutCornerShape(
                     10f, 10f,
                     10f, 10f
-                ),
-            )
+            ),
+        )
     ) {
-        Column(
-            Modifier.fillMaxSize()
-        ) {
-            CarImage(car.imgUrl)
-            Text(
-                text = car.model,
-                color = Color.White,
-                textAlign = TextAlign.Center,
-                fontSize = 30.sp,
-            )
-            Text(
-                text = car.year,
-                color = Color.White,
-                fontSize = 30.sp,
-                textAlign = TextAlign.Center,
-            )
-        }
+        CarImage(car.imgUrl)
+        Text(
+            text = car.model,
+            color = Color.White,
+            textAlign = TextAlign.Center,
+            fontSize = 30.sp,
+        )
+        Text(
+            text = car.year,
+            color = Color.White,
+            fontSize = 30.sp,
+            textAlign = TextAlign.Center,
+        )
     }
 }
 
