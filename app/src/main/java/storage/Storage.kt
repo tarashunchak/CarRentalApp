@@ -9,6 +9,15 @@ import storage.models.User
 import storage.models.UserProfile
 import java.util.Date
 
+private var currentUserID:UInt =  0u
+public fun setCurrentUserID(id:UInt){
+    currentUserID = id
+}
+
+public fun getCurrentUserID(): UInt{
+    return currentUserID
+}
+
 public var users =  mutableMapOf<UInt, User>()
 public var usersProfiles = mutableMapOf<UInt, UserProfile>()
 
@@ -18,6 +27,9 @@ public var cars = mutableMapOf<UInt, Car>()
 public fun FillWithTestData(){
     CreateUser(User("admin", "admin"))
     CreateProducer(Producer("Mercedes", "Germany"))
+    CreateCar(Car("Some Auto", "white", 1u))
+    CreateCar(Car("Some Auto", "white", 1u))
+    CreateCar(Car("Some Auto", "white", 1u))
     CreateCar(Car("Some Auto", "white", 1u))
     CreateCar(Car("Some Auto", "white", 1u))
 }

@@ -1,3 +1,4 @@
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.Arrangement
@@ -20,10 +21,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import services.AuthUser
 import services.IsUserExist
 import java.lang.ref.Reference
 
@@ -31,6 +34,7 @@ import java.lang.ref.Reference
 fun LoginScreen(navController: NavController){
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
+    val context = LocalContext.current
     Column(
         modifier = Modifier.fillMaxSize()
             .background(Color(0xFF000A31))
@@ -49,12 +53,10 @@ fun LoginScreen(navController: NavController){
         LoginTextField("Password", password)
         Spacer(modifier = Modifier.height(20.dp))
         LoginButton({
-            if(IsUserExist(username.value, password.value))
+            if(AuthUser(username.value, password.value, context))
                navController.navigate("home"){
                    popUpTo(0)
                }
-            else
-                0
         })
     }
 }

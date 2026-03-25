@@ -36,7 +36,7 @@ fun MyNavigation(){
     NavHost(
         modifier = Modifier.fillMaxSize(),
         navController = navController,
-        startDestination = "home"
+        startDestination = "login"
     ){
         composable("home"){
             HomeScreen()
