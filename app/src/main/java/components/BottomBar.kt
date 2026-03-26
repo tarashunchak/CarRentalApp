@@ -1,15 +1,11 @@
 package components
 
-import android.view.View
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.content.MediaType.Companion.Text
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Text
@@ -22,7 +18,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType.Companion.Text
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,7 +35,10 @@ fun BottomBar(navController: NavController){
             .background(Color(0xFF001F42))
             .zIndex(2f)
     ){
-        BottomBarButton("Profile", {activeButton="Profile"}, activeButton=="Profile")
+        BottomBarButton("Profile", {
+            activeButton="Profile"
+            navController.navigate("profile")
+        }, activeButton=="Profile")
         BottomBarButton("Home", {activeButton="Home"}, activeButton=="Home")
         BottomBarButton("Cars", {activeButton="Cars"}, activeButton=="Cars")
         BottomBarButton("Customers", {activeButton="Customers"}, activeButton=="Customers")

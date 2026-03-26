@@ -16,6 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import screens.Home.HomeScreen
+import screens.UserProfile.UserProfileScreen
 import storage.FillWithTestData
 
 class MainActivity : ComponentActivity() {
@@ -39,10 +40,14 @@ fun MyNavigation(){
         startDestination = "home"
     ){
         composable("home"){
-            HomeScreen()
+            HomeScreen(navController)
         }
         composable("login"){
             LoginScreen(navController)
         }
+        composable(route="profile"){
+            UserProfileScreen(navController)
+        }
     }
 }
+
