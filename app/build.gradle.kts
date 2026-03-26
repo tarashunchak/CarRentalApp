@@ -40,11 +40,18 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.compose.foundation.layout)
     val nav_version = "2.9.7"
     implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("androidx.navigation:navigation-fragment-ktx:${nav_version}")
     implementation("androidx.navigation:navigation-ui-ktx:${nav_version}")
     implementation("androidx.navigation:navigation-compose:${nav_version}")
+    // Google Maps SDK for Android
+    implementation(libs.places)
+    implementation(libs.play.services.maps)
+
+// Google maps Compose
+    implementation(libs.maps.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
