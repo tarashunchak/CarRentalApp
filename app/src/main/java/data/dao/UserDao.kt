@@ -7,19 +7,18 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import androidx.room.Upsert
 import data.entity.User
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao{
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addUser(user: User)
+    @Upsert
+    fun upsertUser(user: User)
 
-    @Query(value = "SELECT * FROM users ORDER BY id ASC")
-    suspend fun readAllData(): LiveData<List<User>>
+    @Query(value = "SELECT * FROM Users ORDER BY id ASC")
+    fun readAllData(): Flow<List<User>>
 
-    @Update
-    suspend fun updateUser()
-
-    @Delete
-    suspend fun deleteUser()
+    @Query("SELECT * FROM Users WHERE id = :userId")
+    fun getUserById(userId:Int) :Flow<User?>
 }

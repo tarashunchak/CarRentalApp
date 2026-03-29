@@ -3,15 +3,15 @@ package storage.models
 import storage.cars
 import storage.producers
 
-/*------------------Producer-------------------*/
+/*------------------__producer-------------------*/
 private var _producerAI = 0u;
-data class Producer(
+data class __producer(
     val name:String,
     val country:String,
     val id:UInt = _producerAI++,
 )
 
-fun CreateProducer(producer: Producer){
+fun Create__producer(producer: __producer){
     producers.set(producer.id, producer)
 }
 
@@ -29,7 +29,7 @@ data class Car(
 
 fun CreateCar(car: Car){
     /*if(!producers.contains(car.producerID))
-        throw Exception("Producer with id ${car.producerID} not exist")*/
+        throw Exception("__producer with id ${car.producerID} not exist")*/
 
     cars?.set(car.carID, car)
 }

@@ -6,7 +6,9 @@ import data.entity.Car
 class CarsRepository(
     private val carDao: CarDao
 ){
-    suspend fun addCar(car: Car){
+    val cars = carDao.readAllData()
+
+    suspend fun insertCar(car: Car){
         carDao.upsertCar(car)
     }
 
@@ -15,6 +17,5 @@ class CarsRepository(
     }
 
     suspend fun deleteCar(carId:Int){
-        carDao.deleteCar()
     }
 }

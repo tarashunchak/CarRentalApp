@@ -1,26 +1,27 @@
 package data.dao
 
 import androidx.lifecycle.LiveData
+import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Upsert
 import data.entity.Car
+import kotlinx.coroutines.flow.Flow
 
+@Dao
 interface CarDao {
     @Upsert
     suspend fun upsertCar(car: Car)
 
     @Query( "SELECT * FROM cars ORDER BY id ASC")
-    suspend fun readAllData(): LiveData<List<Car>>
+    fun readAllData(): Flow<List<Car>>
 
-    @Delete
-    suspend fun deleteCar()
 
     @Query("SELECT * FROM cars ORDER BY model ASC")
-    suspend fun getCarsOrderedByModel(): LiveData<List<Car>>
+    fun getCarsOrderedByModel(): LiveData<List<Car>>
 
     @Query("SELECT * FROM cars ORDER BY daily_price ASC")
-    suspend fun getCarsOrderedByDailyPrice(): LiveData<List<Car>>
+    fun getCarsOrderedByDailyPrice(): LiveData<List<Car>>
 }

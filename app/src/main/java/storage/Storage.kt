@@ -2,11 +2,10 @@ package storage
 
 import storage.models.Car
 import storage.models.CreateCar
-import storage.models.CreateProducer
 import storage.models.CreateUser
-import storage.models.Producer
 import storage.models.User
 import storage.models.UserProfile
+import storage.models.__producer
 import java.util.Date
 
 private var currentUserID:UInt =  0u
@@ -21,10 +20,10 @@ public fun getCurrentUserID(): UInt{
 public var users =  mutableMapOf<UInt, User>()
 public var usersProfiles = mutableMapOf<UInt, UserProfile>()
 
-public var producers = mutableMapOf<UInt, Producer>()
+public var producers = mutableMapOf<UInt, __producer>()
 public var cars = mutableMapOf<UInt, Car>()
 
-public fun FillWithTestData(){
+/*public fun FillWithTestData(){
     CreateUser(User("admin", "admin"))
     CreateProducer(Producer("Toyota", "Japan"))
     CreateProducer(Producer("BMW", "Germany"))
@@ -48,4 +47,4 @@ public fun FillWithTestData(){
     CreateCar(Car("Volvo XC90", "black", 13u))
     CreateCar(Car("Lexus RX", "pearl", 14u))
     CreateCar(Car("Nissan Leaf", "green", 15u))
-}
+}*/
