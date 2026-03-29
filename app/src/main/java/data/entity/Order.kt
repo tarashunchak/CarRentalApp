@@ -22,7 +22,7 @@ import androidx.room.PrimaryKey
             onDelete = ForeignKey.NO_ACTION,
         ),
         ForeignKey(
-            entity = Employee::class,
+            entity = Employees::class,
             parentColumns = ["id"],
             childColumns = ["employee_id"],
             onDelete = ForeignKey.NO_ACTION,

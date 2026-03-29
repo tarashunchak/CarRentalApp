@@ -22,7 +22,7 @@ import androidx.room.PrimaryKey
         )
     ]
 )
-data class Employee(
+data class Employees(
     @PrimaryKey(autoGenerate = true)
     val id:Int,
     @ColumnInfo("user_id")

@@ -7,7 +7,7 @@ import data.dao.EmployeeDao
 import data.dao.UserDao
 import data.entity.Car
 import data.entity.Customers
-import data.entity.Employee
+import data.entity.Employees
 import data.entity.Order
 import data.entity.Payment
 import data.entity.Producer
@@ -21,7 +21,7 @@ import data.entity.WorkType
         Producer::class,
         Customers::class,
         Payment::class,
-        Employee::class,
+        Employees::class,
         WorkType::class,
         Order::class],
     version=1,
@@ -29,5 +29,5 @@ import data.entity.WorkType
 abstract class AppDatabase : RoomDatabase(){
     abstract fun userDao(): UserDao
     abstract fun carDao(): CarDao
-    abstract fun employees(): EmployeeDao
+    abstract fun employeesDao(): EmployeeDao
 }

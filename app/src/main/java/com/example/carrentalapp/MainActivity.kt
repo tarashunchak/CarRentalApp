@@ -13,13 +13,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
 import data.database.AppDatabase
-import data.entity.Employee
 import data.repository.CarsRepository
 import data.repository.EmployeesRepository
-import data.repository.UserRepository
 import ui.screens.Home.HomeScreen
-import ui.screens.UserProfile.UserProfileScreen
 import ui.screens.CarsScreen.CarsScreen
+import ui.screens.UserProfile.EmployeeProfileScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +43,7 @@ class MainActivity : ComponentActivity() {
 fun MyNavigation(db: AppDatabase){
     val navController = rememberNavController()
     val carsRepository = CarsRepository(db.carDao())
-    val employeesRepository = EmployeesRepository(db.employeeDao())
+    val employeesRepository = EmployeesRepository(db.employeesDao())
     NavHost(
         modifier = Modifier.fillMaxSize(),
         navController = navController,
@@ -58,7 +56,7 @@ fun MyNavigation(db: AppDatabase){
             LoginScreen(navController)
         }
         composable("profile"){
-            UserProfileScreen(navController, usersRepository)
+            EmployeeProfileScreen(navController, employeesRepository)
         }
         composable("cars"){
             CarsScreen(navController, carsRepository)

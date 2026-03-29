@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
+import com.example.carrentalapp.ui.theme.ForegroundBlue
 
 @Composable
 fun BottomBar(navController: NavController){
@@ -32,7 +33,7 @@ fun BottomBar(navController: NavController){
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.fillMaxWidth()
             .height(60.dp)
-            .background(Color(0xFF001F42))
+            .background(ForegroundBlue)
             .zIndex(2f)
     ){
         BottomBarButton("Profile", {
