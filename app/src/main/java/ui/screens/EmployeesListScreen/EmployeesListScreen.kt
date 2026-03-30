@@ -1,4 +1,4 @@
-package ui.screens.CustomersListScreen
+package ui.screens.EmployeesListScreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -16,33 +16,33 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import data.repository.AppRepositoryProvider
-import data.repository.CustomersRepository
-import ui.components.BottomBar
-import ui.screens.CustomersListScreen.Components.CustomerCard
+import data.repository.EmployeesRepository
+import data.repository.WorkTypeRepository
+import ui.screens.EmployeesListScreen.Components.EmployeeCard
 import ui.screens.Home.Components.Header
-import viewmodels.CustomersViewModel
-import viewmodels.CustomersViewModelFactory
+import viewmodels.EmployeesViewModel
+import viewmodels.EmployeesViewModelFactory
 
 @Composable
-fun CustomersListScreen(){
-    val customersRep = AppRepositoryProvider.customersRepository
-    val viewModel: CustomersViewModel = viewModel(
-        factory = CustomersViewModelFactory(customersRep)
+fun EmployeesListScreen(){
+    val employeesRep = AppRepositoryProvider.employeesRepository
+    val workTypeRep = AppRepositoryProvider.workTypeRepository
+    val viewModel: EmployeesViewModel = viewModel(
+        factory = EmployeesViewModelFactory(employeesRep)
     )
-    val customers = viewModel.customers.collectAsState(initial = emptyList())
+    val employees = viewModel.employees.collectAsState(emptyList())
     Column() {
         Header()
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier
-                .height(LocalConfiguration.current.screenHeightDp.dp - 30.dp)
+                .height(LocalConfiguration.current.screenHeightDp.dp)
                 .fillMaxWidth()
                 .background(Color(0xFF000A31))
-                .padding(10.dp)
+                .padding(horizontal = 10.dp)
         ) {
-            items(customers.value) { customer ->
-                CustomerCard(customer)
+            items(employees.value) { employee->
+                EmployeeCard(employee, workTypeRep)
             }
         }
-    }
-}
+    }}

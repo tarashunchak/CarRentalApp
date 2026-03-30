@@ -1,11 +1,12 @@
 package navigator
 
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 
 open class Navigator {
-    lateinit var navController: NavController
+    lateinit var navController: NavHostController
 
-    fun create(navController: NavController){
+    fun create(navController: NavHostController){
         this.navController = navController
     }
 

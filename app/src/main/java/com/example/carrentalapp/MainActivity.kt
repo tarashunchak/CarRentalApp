@@ -21,6 +21,7 @@ import data.repository.CarsRepository
 import data.repository.CustomersRepository
 import data.repository.EmployeesRepository
 import navigator.AppNavigator
+import navigator.Hosts.AppNavHost
 import navigator.Navigator
 import ui.components.BottomBar
 import ui.screens.Home.HomeScreen
@@ -51,36 +52,6 @@ class MainActivity : ComponentActivity() {
 fun MyNavigation(db: AppDatabase){
     val navController = rememberNavController()
     AppNavigator.create(navController)
-    val carsRepository = CarsRepository(db.carDao())
-    val employeesRepository = EmployeesRepository(db.employeesDao())
-    val customersRepository = CustomersRepository(db.customersDao())
-    Scaffold(
-        bottomBar = {
-            BottomBar()
-        }
-    ) { padding ->
-        NavHost(
-            modifier = Modifier.fillMaxSize()
-                .padding(bottom=padding.calculateBottomPadding() ),
-            navController = navController,
-            startDestination = "home"
-        ) {
-            composable("home") {
-                HomeScreen()
-            }
-            composable("login") {
-                LoginScreen()
-            }
-            composable("profile") {
-                EmployeeProfileScreen(employeesRepository)
-            }
-            composable("cars") {
-                CarsScreen(carsRepository)
-            }
-            composable("customers") {
-                CustomersListScreen(customersRepository)
-            }
-        }
-    }
+    AppNavHost(db)
 }
 

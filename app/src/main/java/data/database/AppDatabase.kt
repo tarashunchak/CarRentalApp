@@ -5,7 +5,9 @@ import androidx.room.RoomDatabase
 import data.dao.CarDao
 import data.dao.CustomersDao
 import data.dao.EmployeeDao
+import data.dao.OrderDao
 import data.dao.UserDao
+import data.dao.WorkTypeDao
 import data.entity.Car
 import data.entity.Customers
 import data.entity.Employees
@@ -32,4 +34,6 @@ abstract class AppDatabase : RoomDatabase(){
     abstract fun carDao(): CarDao
     abstract fun employeesDao(): EmployeeDao
     abstract fun customersDao (): CustomersDao
+    abstract fun workTypeDao(): WorkTypeDao
+    abstract fun ordersDao(): OrderDao
 }
