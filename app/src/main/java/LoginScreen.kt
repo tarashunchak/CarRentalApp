@@ -26,12 +26,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import navigator.AppNavigator
 import services.AuthUser
 import services.IsUserExist
 import java.lang.ref.Reference
 
 @Composable
-fun LoginScreen(navController: NavController){
+fun LoginScreen(){
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     val context = LocalContext.current
@@ -54,9 +55,7 @@ fun LoginScreen(navController: NavController){
         Spacer(modifier = Modifier.height(20.dp))
         LoginButton({
             if(AuthUser(username.value, password.value, context))
-               navController.navigate("home"){
-                   popUpTo(0)
-               }
+                AppNavigator.navigate("home")
         })
     }
 }

@@ -12,7 +12,7 @@ import androidx.navigation.NavController
 import ui.screens.Home.Components.Header
 
 @Composable
-fun HomeScreen(navController: NavController){
+fun HomeScreen(){
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
@@ -20,6 +20,6 @@ fun HomeScreen(navController: NavController){
             .background(Color(0xFF000A31))
     ){
         Header()
-        BottomBar(navController)
+        BottomBar()
     }
 }

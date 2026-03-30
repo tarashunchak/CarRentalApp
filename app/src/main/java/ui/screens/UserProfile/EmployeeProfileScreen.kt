@@ -33,7 +33,7 @@ import viewmodels.EmployeesViewModel
 import viewmodels.EmployeesViewModelFactory
 
 @Composable
-fun EmployeeProfileScreen(navController: NavController, repository: EmployeesRepository){
+fun EmployeeProfileScreen( repository: EmployeesRepository){
     val viewModel : EmployeesViewModel= viewModel(
         factory = EmployeesViewModelFactory(repository)
     )
@@ -91,7 +91,7 @@ fun EmployeeProfileScreen(navController: NavController, repository: EmployeesRep
                 DataColumn("Email: ", employee?.email)
             }
         }
-        BottomBar(navController)
+        BottomBar()
     }
 }
 

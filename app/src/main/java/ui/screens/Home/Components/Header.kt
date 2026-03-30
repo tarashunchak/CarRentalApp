@@ -18,10 +18,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import data.repository.EmployeesRepository
 import storage.getCurrentUserID
 import storage.users
+import ui.screens.UserProfile.EmployeeProfileScreen
+import viewmodels.UserViewModel
 
 @Composable
 fun Header(){
@@ -42,7 +46,8 @@ fun Header(){
         Text(
             fontSize = 26.sp,
             color = Color.White,
-            text = users.get(getCurrentUserID())?.username ?: "")
+            text = "",
+        )
     }
 }
 
