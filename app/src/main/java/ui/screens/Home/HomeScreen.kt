@@ -20,6 +20,5 @@ fun HomeScreen(){
             .background(Color(0xFF000A31))
     ){
         Header()
-        BottomBar()
     }
 }

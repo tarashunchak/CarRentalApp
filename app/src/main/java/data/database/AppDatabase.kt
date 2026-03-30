@@ -3,6 +3,7 @@ package data.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import data.dao.CarDao
+import data.dao.CustomersDao
 import data.dao.EmployeeDao
 import data.dao.UserDao
 import data.entity.Car
@@ -30,4 +31,5 @@ abstract class AppDatabase : RoomDatabase(){
     abstract fun userDao(): UserDao
     abstract fun carDao(): CarDao
     abstract fun employeesDao(): EmployeeDao
+    abstract fun customersDao (): CustomersDao
 }

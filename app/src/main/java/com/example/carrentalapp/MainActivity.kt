@@ -6,8 +6,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -15,11 +18,14 @@ import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
 import data.database.AppDatabase
 import data.repository.CarsRepository
+import data.repository.CustomersRepository
 import data.repository.EmployeesRepository
 import navigator.AppNavigator
 import navigator.Navigator
+import ui.components.BottomBar
 import ui.screens.Home.HomeScreen
 import ui.screens.CarsScreen.CarsScreen
+import ui.screens.CustomersListScreen.CustomersListScreen
 import ui.screens.UserProfile.EmployeeProfileScreen
 
 class MainActivity : ComponentActivity() {
@@ -47,22 +53,33 @@ fun MyNavigation(db: AppDatabase){
     AppNavigator.create(navController)
     val carsRepository = CarsRepository(db.carDao())
     val employeesRepository = EmployeesRepository(db.employeesDao())
-    NavHost(
-        modifier = Modifier.fillMaxSize(),
-        navController = navController,
-        startDestination = "home"
-    ){
-        composable("home"){
-            HomeScreen()
+    val customersRepository = CustomersRepository(db.customersDao())
+    Scaffold(
+        bottomBar = {
+            BottomBar()
         }
-        composable("login"){
-            LoginScreen()
-        }
-        composable("profile"){
-            EmployeeProfileScreen(employeesRepository)
-        }
-        composable("cars"){
-            CarsScreen( carsRepository)
+    ) { padding ->
+        NavHost(
+            modifier = Modifier.fillMaxSize()
+                .padding(bottom=padding.calculateBottomPadding() ),
+            navController = navController,
+            startDestination = "home"
+        ) {
+            composable("home") {
+                HomeScreen()
+            }
+            composable("login") {
+                LoginScreen()
+            }
+            composable("profile") {
+                EmployeeProfileScreen(employeesRepository)
+            }
+            composable("cars") {
+                CarsScreen(carsRepository)
+            }
+            composable("customers") {
+                CustomersListScreen(customersRepository)
+            }
         }
     }
 }

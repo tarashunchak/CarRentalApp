@@ -27,6 +27,5 @@ fun CarsScreen(
     ){
         Header()
         ContentBlock(cars)
-        BottomBar()
     }
 }

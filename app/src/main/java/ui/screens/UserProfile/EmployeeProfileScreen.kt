@@ -91,7 +91,6 @@ fun EmployeeProfileScreen( repository: EmployeesRepository){
                 DataColumn("Email: ", employee?.email)
             }
         }
-        BottomBar()
     }
 }
 
