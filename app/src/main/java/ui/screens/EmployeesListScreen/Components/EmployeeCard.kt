@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import com.example.carrentalapp.ui.theme.ForegroundBlue
 import data.entity.Employees
 import data.repository.WorkTypeRepository
+import navigator.AppNavigator
 
 @Composable
 fun EmployeeCard(employee: Employees, repository: WorkTypeRepository){
@@ -37,7 +38,12 @@ fun EmployeeCard(employee: Employees, repository: WorkTypeRepository){
             .fillMaxWidth()
             .padding(horizontal = 0.dp, vertical = 8.dp)
             .height(100.dp)
-            .clickable(true, onClick = {}),
+            .clickable(
+                enabled = true,
+                onClick = {
+                    AppNavigator.navigate("profile/${employee.id}")
+                }
+            ),
         colors = CardDefaults.cardColors(containerColor = ForegroundBlue),
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)

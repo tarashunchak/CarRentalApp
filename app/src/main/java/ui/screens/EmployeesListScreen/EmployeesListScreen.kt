@@ -16,8 +16,6 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import data.repository.AppRepositoryProvider
-import data.repository.EmployeesRepository
-import data.repository.WorkTypeRepository
 import ui.screens.EmployeesListScreen.Components.EmployeeCard
 import ui.screens.Home.Components.Header
 import viewmodels.EmployeesViewModel

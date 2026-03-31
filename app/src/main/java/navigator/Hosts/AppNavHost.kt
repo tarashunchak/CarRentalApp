@@ -37,8 +37,9 @@ fun AppNavHost(db: AppDatabase){
             composable("employees") {
                 EmployeesListScreen()
             }
-            composable("profile") {
-                EmployeeProfileScreen()
+            composable("profile/{employeeId}") {backStackEntry->
+                val employeeId = backStackEntry.arguments?.getString("employeeId")?.toInt() ?: 0
+                EmployeeProfileScreen(employeeId)
             }
             composable("cars") {
                 CarsScreen()

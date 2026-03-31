@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
@@ -29,25 +27,22 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import com.example.carrentalapp.ui.theme.BackgroundBlue
 import com.example.carrentalapp.ui.theme.ForegroundBlue
 import data.repository.AppRepositoryProvider
-import data.repository.EmployeesRepository
-import ui.components.BottomBar
 import viewmodels.EmployeesViewModel
 import viewmodels.EmployeesViewModelFactory
 
 @Composable
-fun EmployeeProfileScreen(){
+fun EmployeeProfileScreen(employeeId:Int){
     val employeeRep = AppRepositoryProvider.employeesRepository
     val viewModel : EmployeesViewModel= viewModel(
         factory = EmployeesViewModelFactory(employeeRep)
     )
-    val employee by viewModel.getEmployee(1).collectAsState()
+    val employee by viewModel.getEmployee(employeeId).collectAsState()
     val scrollState = rememberScrollState()
     val orders by remember(employee) {
-        AppRepositoryProvider.ordersRepository.getOrdersByEmployeeId(employee?.id?:0)
+        AppRepositoryProvider.ordersRepository.getOrdersByEmployeeId(employeeId)
     }.collectAsState(emptyList())
     LaunchedEffect(orders) {
         Log.d("EmployeeProfile", "Orders: ${orders.size}")
@@ -94,7 +89,7 @@ fun EmployeeProfileScreen(){
                     Column(
                         modifier = Modifier.fillMaxWidth(0.9f)
                     ){
-                        DataRow("EID: ", "#${employee?.id}")
+                        DataRow("EID: ", "#${employeeId}")
                         DataRow("Date of B: ", "${employee?.dateOfB}")
                     }
                 }
