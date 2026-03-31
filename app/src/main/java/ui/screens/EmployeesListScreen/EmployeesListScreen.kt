@@ -3,6 +3,7 @@ package ui.screens.EmployeesListScreen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -24,7 +25,6 @@ import viewmodels.EmployeesViewModelFactory
 @Composable
 fun EmployeesListScreen(){
     val employeesRep = AppRepositoryProvider.employeesRepository
-    val workTypeRep = AppRepositoryProvider.workTypeRepository
     val viewModel: EmployeesViewModel = viewModel(
         factory = EmployeesViewModelFactory(employeesRep)
     )
@@ -32,15 +32,14 @@ fun EmployeesListScreen(){
     Column() {
         Header()
         LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(10.dp),
+            verticalArrangement = Arrangement.spacedBy(5.dp),
             modifier = Modifier
-                .height(LocalConfiguration.current.screenHeightDp.dp)
-                .fillMaxWidth()
+                .fillMaxSize()
                 .background(Color(0xFF000A31))
-                .padding(horizontal = 10.dp)
+                .padding(horizontal = 8.dp)
         ) {
             items(employees.value) { employee->
-                EmployeeCard(employee, workTypeRep)
+                EmployeeCard(employee)
             }
         }
     }}

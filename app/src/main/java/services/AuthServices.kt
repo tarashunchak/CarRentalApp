@@ -31,11 +31,11 @@ fun AuthUser(username:String, password:String, context: Context) : Boolean{
             setCurrentUserID(users.entries.find { it.value.username == username }?.key ?: 0u)
             return true
         }
-        else{
+        /*else{
             Toast.makeText(context, "Incorrect password!", Toast.LENGTH_SHORT)?.show()
             return false
-        }
+        }*/
     }
-    Toast.makeText(context, "User not found!", Toast.LENGTH_SHORT)?.show()
+    Toast.makeText(context, "Incorrect login data", Toast.LENGTH_SHORT)?.show()
     return false
 }

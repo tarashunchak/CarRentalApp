@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carrentalapp.ui.theme.ForegroundBlue
 import data.entity.Customers
+import services.LoadImageByUrl
 
 @Composable
 fun CustomerCard(customer: Customers){
@@ -56,15 +57,7 @@ fun CustomerCard(customer: Customers){
                     .size(60.dp)
                     .clip(CircleShape)
                     .background(Color(0xFF0079FF)),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = customer.fullName,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
-                )
-            }
+            ){ LoadImageByUrl() }
 
             Spacer(modifier = Modifier.width(16.dp))
 

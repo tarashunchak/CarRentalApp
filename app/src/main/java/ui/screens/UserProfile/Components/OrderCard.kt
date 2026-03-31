@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.carrentalapp.ui.theme.ForegroundBlue
 import data.entity.Order
-import navigator.AppNavigator
 import ui.screens.EmployeesListScreen.Components.DataColumn
 
 @Composable
@@ -22,12 +21,13 @@ fun OrderCard(order: Order){
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 0.dp, vertical = 8.dp)
             .height(100.dp)
             .clickable(
                 enabled = true,
                 onClick = {}
-            ),
+            )
+            .padding(8.dp)
+        ,
         colors = CardDefaults.cardColors(containerColor = ForegroundBlue),
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)

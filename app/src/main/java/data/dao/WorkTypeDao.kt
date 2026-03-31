@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface WorkTypeDao {
     @Query("SELECT * FROM Work_type WHERE id = :workTypeId")
-    fun getWorkTypeById(workTypeId: Int): Flow<WorkType>
+    fun getWorkTypeById(workTypeId: Int): WorkType?
 }

@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carrentalapp.ui.theme.ForegroundBlue
 import data.entity.Employees
+import services.LoadImageByUrl
 import ui.screens.UserProfile.DataColumn
 import ui.screens.UserProfile.DataRow
 
@@ -49,7 +50,7 @@ fun MainInfo(employee: Employees?){
                     .fillMaxWidth(0.4f)
                     .background(Color.White)
             ){
-
+                LoadImageByUrl()
             }
             Column(
                 modifier = Modifier.fillMaxWidth(0.9f)

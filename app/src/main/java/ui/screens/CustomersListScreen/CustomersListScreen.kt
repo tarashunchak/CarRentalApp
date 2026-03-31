@@ -3,6 +3,7 @@ package ui.screens.CustomersListScreen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -33,12 +34,11 @@ fun CustomersListScreen(){
     Column() {
         Header()
         LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(10.dp),
+            verticalArrangement = Arrangement.spacedBy(5.dp),
             modifier = Modifier
-                .height(LocalConfiguration.current.screenHeightDp.dp - 30.dp)
-                .fillMaxWidth()
+                .fillMaxSize()
                 .background(Color(0xFF000A31))
-                .padding(10.dp)
+                .padding(horizontal = 8.dp)
         ) {
             items(customers.value) { customer ->
                 CustomerCard(customer)

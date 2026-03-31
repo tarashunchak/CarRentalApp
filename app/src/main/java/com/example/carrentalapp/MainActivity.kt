@@ -41,6 +41,7 @@ class MainActivity : ComponentActivity() {
         )
             .createFromAsset("rentCars.db")
             .fallbackToDestructiveMigration()
+            .allowMainThreadQueries()
             .build()
         setContent {
             MyNavigation(db)

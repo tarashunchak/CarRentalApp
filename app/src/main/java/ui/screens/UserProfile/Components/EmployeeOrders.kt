@@ -15,7 +15,8 @@ import data.repository.AppRepositoryProvider
 @Composable
 fun EmployeeOrders(employeeId:Int){
     val orders by remember(employeeId) {
-        AppRepositoryProvider.ordersRepository.getOrdersByEmployeeId(employeeId)
+        AppRepositoryProvider.ordersRepository
+            .getOrdersByEmployeeId(employeeId)
     }.collectAsState(emptyList())
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(10.dp),

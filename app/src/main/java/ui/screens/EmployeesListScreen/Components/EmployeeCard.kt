@@ -28,11 +28,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carrentalapp.ui.theme.ForegroundBlue
 import data.entity.Employees
-import data.repository.WorkTypeRepository
+import data.repository.AppRepositoryProvider
 import navigator.AppNavigator
+import services.LoadImageByUrl
 
 @Composable
-fun EmployeeCard(employee: Employees, repository: WorkTypeRepository){
+fun EmployeeCard(employee: Employees){
+    val repository = AppRepositoryProvider.workTypeRepository
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -59,15 +61,7 @@ fun EmployeeCard(employee: Employees, repository: WorkTypeRepository){
                     .size(60.dp)
                     .clip(CircleShape)
                     .background(Color(0xFF0079FF)),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = employee.fullName,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
-                )
-            }
+            ){ LoadImageByUrl() }
 
             Spacer(modifier = Modifier.width(16.dp))
 
@@ -86,7 +80,7 @@ fun EmployeeCard(employee: Employees, repository: WorkTypeRepository){
                     color = Color.White
                 )
                 Text(
-                    text = "${repository.getWorkTypeById(employee.workTypeId)}" ?: "Position not set",
+                    text = repository.getWorkTypeById(employee.workTypeId)?.workTypeName ?: "t",
                     fontSize = 14.sp,
                     color = Color.White.copy(alpha = 0.7f)
                 )
