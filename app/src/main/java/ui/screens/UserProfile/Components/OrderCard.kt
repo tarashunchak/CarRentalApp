@@ -1,8 +1,6 @@
 package ui.screens.UserProfile.Components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -15,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.example.carrentalapp.ui.theme.ForegroundBlue
 import data.entity.Order
 import ui.screens.EmployeesListScreen.Components.DataColumn
+import ui.screens.UserProfile.DataRow
 
 @Composable
 fun OrderCard(order: Order){
@@ -22,17 +21,16 @@ fun OrderCard(order: Order){
         modifier = Modifier
             .fillMaxWidth()
             .height(100.dp)
+            .padding(8.dp)
             .clickable(
                 enabled = true,
                 onClick = {}
-            )
-            .padding(8.dp)
-        ,
+            ),
         colors = CardDefaults.cardColors(containerColor = ForegroundBlue),
-        shape = RoundedCornerShape(8.dp),
+        shape = RoundedCornerShape(6.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
-        DataColumn("ID", "${order.id}")
-        DataColumn("Car", "${order.carId}")
+        DataRow("ID", "${order.id}")
+        DataRow("Car", "${order.carId}")
     }
 }

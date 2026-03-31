@@ -19,8 +19,7 @@ fun EmployeeOrders(employeeId:Int){
             .getOrdersByEmployeeId(employeeId)
     }.collectAsState(emptyList())
     LazyColumn(
-        verticalArrangement = Arrangement.spacedBy(10.dp),
-        modifier = Modifier.padding(horizontal = 5.dp)
+        verticalArrangement = Arrangement.spacedBy(5.dp),
     ) {
         items(orders){ order->
             OrderCard(order)

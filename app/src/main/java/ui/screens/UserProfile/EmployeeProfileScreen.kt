@@ -32,7 +32,6 @@ fun EmployeeProfileScreen(employeeId:Int){
     )
     val employee by viewModel.getEmployee(employeeId).collectAsState()
     Column(
-        verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.fillMaxSize()
             .background(BackgroundBlue)
     ) {
@@ -43,9 +42,7 @@ fun EmployeeProfileScreen(employeeId:Int){
 
 @Composable
 fun DataColumn(title:String?, text:String?){
-    Column(
-
-    ){
+    Column(){
         Spacer(
             modifier = Modifier.height(8.dp)
         )
