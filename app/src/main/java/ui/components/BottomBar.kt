@@ -38,36 +38,6 @@ import com.example.carrentalapp.ui.theme.ForegroundBlue
 import navigator.AppNavigator
 
 @Composable
-fun BottomBarS(){
-    var activeButton by remember { mutableStateOf("Home") }
-    Row(
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth()
-            .height(60.dp)
-            .background(ForegroundBlue)
-            .zIndex(3f)
-    ){
-        BottomBarButton("Profile", {
-            activeButton="Profile"
-            AppNavigator.navigate("profile")
-        }, activeButton=="Profile")
-        BottomBarButton("Home", {
-            activeButton="Home"
-            AppNavigator.navigate("home")
-        }, activeButton=="Home")
-        BottomBarButton("Cars", {
-            activeButton="Cars"
-            AppNavigator.navigate("cars")
-        }, activeButton=="Cars")
-        BottomBarButton("Customers", {
-            activeButton="Customers"
-            AppNavigator.navigate("customers")
-        }, activeButton=="Customers")
-    }
-}
-
-@Composable
 fun BottomBarButton(name:String, onClick:()->Unit, isActive:Boolean){
     val fontWeight = if(isActive)
         FontWeight.Bold
@@ -104,7 +74,7 @@ fun BottomBar(){
     NavigationBar() {
         NavigationBarItem(
             selected = currentRoute == "profile",
-            onClick = { AppNavigator.navigate(("profile"))},
+            onClick = { AppNavigator.navigate(("profile/1"))},
             icon = {Icon(Icons.Default.AccountCircle, contentDescription = null)},
             label={Text("Profile")},
         )
