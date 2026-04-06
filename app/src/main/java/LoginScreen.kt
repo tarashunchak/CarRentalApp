@@ -16,6 +16,8 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -24,11 +26,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import data.repository.AppRepositoryProvider
 import navigator.AppNavigator
 import services.AuthUser
 import services.IsUserExist
+import viewmodels.AuthViewModel
+import viewmodels.AuthViewModelFactory
 import java.lang.ref.Reference
 
 @Composable
@@ -36,6 +42,11 @@ fun LoginScreen(){
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     val context = LocalContext.current
+
+    val viewModel: AuthViewModel= viewModel(
+        factory = AuthViewModelFactory(AppRepositoryProvider.usersRepository)
+    )
+
     Column(
         modifier = Modifier.fillMaxSize()
             .background(Color(0xFF000A31))
@@ -54,8 +65,7 @@ fun LoginScreen(){
         LoginTextField("Password", password)
         Spacer(modifier = Modifier.height(20.dp))
         LoginButton({
-            if(AuthUser(username.value, password.value, context))
-                AppNavigator.navigate("home")
+            viewModel.login(username.value, password.value)
         })
     }
 }

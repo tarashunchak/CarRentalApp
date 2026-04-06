@@ -10,5 +10,5 @@ data class User(
     val id:Int = 0,
     val username:String,
     @ColumnInfo(name="password_hash")
-    val passwordHash:String = "undefined",
+    val passwordHash:ByteArray
 )

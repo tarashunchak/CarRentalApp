@@ -1,6 +1,5 @@
 package navigator
 
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 
 open class Navigator {
@@ -11,11 +10,15 @@ open class Navigator {
     }
 
     fun navigate(route:String){
-        navController?.navigate(route)
+        navController.navigate(route)
     }
 
     fun popBack(){
-        navController?.popBackStack()
+        navController.popBackStack()
+    }
+
+    fun clear(){
+        this.navController.clearBackStack<Any>()
     }
 }
 

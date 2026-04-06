@@ -15,6 +15,7 @@ foundationLayout = "1.10.6"
 roomCommonJvm = "2.8.4"
 roomKtx = "2.8.4"
 coreKtxVersion = "1.18.0"
+ui = "1.10.6"
 
 [libraries]
 androidx-room-sqlite-wrapper = { module = "androidx.room:room-sqlite-wrapper", version.ref = "room" }
@@ -39,6 +40,7 @@ androidx-compose-foundation-layout = { group = "androidx.compose.foundation", na
 androidx-room-common-jvm = { group = "androidx.room", name = "room-common-jvm", version.ref = "roomCommonJvm" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtxVersion" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "ui" }
 
 [plugins]
 androidx-room = { id = "androidx.room", version.ref = "room" }

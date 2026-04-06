@@ -21,4 +21,7 @@ interface UserDao{
 
     @Query("SELECT * FROM Users WHERE id = :userId")
     fun getUserById(userId:Int) :Flow<User?>
+
+    @Query("SELECT * FROM Users WHERE username = :username")
+    fun getUserByUsername(username:String) :Flow<User?>
 }

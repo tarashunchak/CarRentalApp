@@ -1,12 +1,12 @@
 package ui.screens.UserProfile
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -31,12 +31,12 @@ fun EmployeeProfileScreen(employeeId:Int){
         factory = EmployeesViewModelFactory(employeeRep)
     )
     val employee by viewModel.getEmployee(employeeId).collectAsState()
-    Column(
+    LazyColumn(
         modifier = Modifier.fillMaxSize()
-            .background(BackgroundBlue)
+            .background(BackgroundBlue),
     ) {
-        MainInfo(employee)
-        EmployeeOrders(employeeId)
+        item{ MainInfo(employee)}
+        item{EmployeeOrders(employeeId)}
     }
 }
 

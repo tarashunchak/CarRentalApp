@@ -8,6 +8,7 @@ object AppRepositoryProvider{
     lateinit var ordersRepository: OrderRepository
     lateinit var carsRepository: CarsRepository
     lateinit var workTypeRepository: WorkTypeRepository
+    lateinit var usersRepository: UserRepository
 
     fun init(db: AppDatabase){
         carsRepository = CarsRepository(db.carDao())
@@ -15,5 +16,6 @@ object AppRepositoryProvider{
         customersRepository = CustomersRepository(db.customersDao())
         workTypeRepository = WorkTypeRepository(db.workTypeDao())
         ordersRepository = OrderRepository(db.ordersDao())
+        usersRepository = UserRepository(db.userDao())
     }
 }

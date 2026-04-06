@@ -21,4 +21,5 @@ class UserRepository (
     }
 
     fun getUserById(userId:Int) = userDao.getUserById(userId)
+    fun getUserByUsername(username:String) = userDao.getUserByUsername(username)
 }

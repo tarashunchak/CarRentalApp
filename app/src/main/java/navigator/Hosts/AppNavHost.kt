@@ -18,8 +18,7 @@ import ui.screens.Home.HomeScreen
 import ui.screens.UserProfile.EmployeeProfileScreen
 
 @Composable
-fun AppNavHost(db: AppDatabase){
-    AppRepositoryProvider.init(db)
+fun AppNavHost(){
     Scaffold(
         bottomBar = {
             BottomBar()
